@@ -9,11 +9,11 @@ class Hero {
   }
 
   void run() {
-    print('$name run with hp $hp!');
+    print('$name runs with hp $hp!');
   }
 
   void sleep() {
-    print('$name sleeps to recover strength.');
+    print('$name sleeps');
   }
 }
 

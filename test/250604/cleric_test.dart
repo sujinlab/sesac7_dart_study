@@ -19,9 +19,14 @@ void main() {
 
 
     test('selfAid테스트, mp가 0일때 시도', () {
+      //given: MP를 0으로 만들기 위한 준비
+      int initialMP = cleric.mp;
+      int selfAidCost = 5;
+      int requiredCalls = (initialMP / selfAidCost).ceil();
+      
       //when
-      //mp10을 전부소진시킴
-      for( int i=0; i<5; i++) {
+      //mp 전부소진시킴
+      for( int i=0; i<requiredCalls; i++) {
         cleric.selfAid();
       }
 
