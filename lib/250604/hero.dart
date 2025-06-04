@@ -1,15 +1,15 @@
 class Hero {
   String name;
-  String hp;
+  int hp;
 
   Hero(this.name, this.hp);
 
   void attack() {
-    print('$name attacks with power $hp!');
+    print('$name attacks with hp $hp!');
   }
 
   void run() {
-    print('$name run with power $hp!');
+    print('$name run with hp $hp!');
   }
 
   void sleep() {
