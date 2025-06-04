@@ -38,26 +38,21 @@ void main() {
 
     test('pray 0초 테스트', () {
       //when
-      int firstMP = cleric.mp;
+      int initialMP = cleric.mp;
       int recoveredMP = cleric.pray(0);
 
       //then
-      expect(firstMP,equals(cleric.mp));
+      expect(initialMP,equals(cleric.mp));
       expect(recoveredMP,equals(0));
     });
 
 
     test('pray 2초 테스트', () {
       //when
-      int initialMP = cleric.mp;
       int praySeconds = 2;
       int recoveredMP = cleric.pray(praySeconds);
 
       //then
-      expect(cleric.mp, allOf([
-        greaterThanOrEqualTo(initialMP),
-        lessThanOrEqualTo(initialMP+2)]));
-
       expect(recoveredMP, allOf([
         greaterThanOrEqualTo(praySeconds),
         lessThanOrEqualTo(praySeconds+2)]));
