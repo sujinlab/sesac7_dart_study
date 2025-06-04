@@ -53,7 +53,7 @@ void main() {
       int recoveredMP = cleric.pray(praySeconds);
 
       //then
-      expect(recoveredMP, allOf([
+      expect(recoveredMP, allOf([   
         greaterThanOrEqualTo(praySeconds),
         lessThanOrEqualTo(praySeconds+2)]));
     });
