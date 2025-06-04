@@ -9,7 +9,7 @@ class Hero {
   }
 
   void run() {
-    print('$name defends with power $hp!');
+    print('$name run with power $hp!');
   }
 
   void sleep() {
