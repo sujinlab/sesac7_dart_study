@@ -23,13 +23,13 @@ void main() {
       expect(clericA.hp, 40);
       expect(clericA.mp, 5);
 
-      expect(clericA.name, '아서스B');
-      expect(clericA.hp, 35);
-      expect(clericA.mp, Cleric.maxMP);
+      expect(clericB.name, '아서스B');
+      expect(clericB.hp, 35);
+      expect(clericB.mp, Cleric.maxMP);
 
-      expect(clericA.name, '아서스C');
-      expect(clericA.hp, Cleric.maxHP);
-      expect(clericA.mp, Cleric.maxMP);
+      expect(clericC.name, '아서스C');
+      expect(clericC.hp, Cleric.maxHP);
+      expect(clericC.mp, Cleric.maxMP);
     });
   });
 
