@@ -14,14 +14,22 @@ void main() {
       //given
 
       //when
-      Cleric clericA = Cleric('아서스', hp: 40, mp: 5);
-      Cleric clericB = Cleric('아서스', hp: 35);
-      Cleric clericC = Cleric('아서스');
+      Cleric clericA = Cleric('아서스A', hp: 40, mp: 5);
+      Cleric clericB = Cleric('아서스B', hp: 35);
+      Cleric clericC = Cleric('아서스C');
 
       //then
-      // expect(clericA, isNotNull);
-      // expect(clericB, isNotNull);
-      // expect(clericC, isNotNull);
+      expect(clericA.name, '아서스A');
+      expect(clericA.hp, 40);
+      expect(clericA.mp, 5);
+
+      expect(clericA.name, '아서스B');
+      expect(clericA.hp, 35);
+      expect(clericA.mp, Cleric.maxMP);
+
+      expect(clericA.name, '아서스C');
+      expect(clericA.hp, Cleric.maxHP);
+      expect(clericA.mp, Cleric.maxMP);
     });
   });
 
