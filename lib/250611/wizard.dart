@@ -1,5 +1,6 @@
 import 'package:modu_3_dart_study/250611/wand.dart';
 import 'package:modu_3_dart_study/250604/hero.dart';
+import 'package:modu_3_dart_study/250611/great_wizard.dart';
 
 class Wizard {
   String _name;
@@ -47,7 +48,7 @@ class Wizard {
     }
   }
 
-  Wizard(this._name, this._hp, this._wand) : _mp = 100 {
+  Wizard(this._name, this._hp, this._wand, [int mp = 100]) : _mp = mp {
     //마법사 이름은 널일 수 없고, 반드시 3문자이상
     name = _name;
 
@@ -66,33 +67,6 @@ class Wizard {
       mp = mp - 10;
       hero.hp += 20;
       print('힐을 시전했습니다. 대상HP: ${hero.hp}');
-    } else {
-      print('마나가 부족합니다');
-    }
-  }
-}
-
-class GreatWizard extends Wizard {
-  GreatWizard(super.name, super.hp, super.wand) {
-    super.mp = 150;
-  }
-
-  @override
-  void heal(Hero hero) {
-    if (mp >= 5) {
-      mp = mp - 5;
-      hero.hp += 25;
-      print('힐을 시전했습니다. 대상HP: ${hero.hp}');
-    } else {
-      print('마나가 부족합니다');
-    }
-  }
-
-  void superHeal(Hero hero) {
-    if (mp >= 50) {
-      mp = mp - 50;
-      hero.hp = hero.maxHP;
-      print('슈퍼힐을 시전했습니다. 대상HP: ${hero.hp}');
     } else {
       print('마나가 부족합니다');
     }
