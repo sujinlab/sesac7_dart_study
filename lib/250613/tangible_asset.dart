@@ -15,10 +15,10 @@ abstract class TangibleAsset extends Asset implements Thing {
     _weight = value;
   }
 
-  TangibleAsset(
-    this._weight, {
+  TangibleAsset({
+    required double weight,
     required super.name,
     required super.price,
     required this.color,
-  });
+  }) : _weight = weight;
 }

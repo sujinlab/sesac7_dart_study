@@ -4,14 +4,14 @@ import 'package:test/test.dart';
 void main() {
   test('Book클래스 weight get,set테스트', () {
     Book book = Book(
-      155,
+      weight: 100.0,
       name: 'cup',
       price: 2500,
-      color: 'whtie',
+      color: 'white',
       isbn: "123345030",
     );
 
-    book.weight = 100;
+    book.weight = 100.0;
     expect(book.weight, equals(100));
   });
 }
