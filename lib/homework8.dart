@@ -39,6 +39,7 @@ class B extends Y {
 }
 
 void main() {
+  //연습문제 2
   X obj = A();
   obj.a();
   // obj.b();
@@ -48,4 +49,13 @@ void main() {
   Y y2 = B();
   y1.a();
   y2.a();
+
+  //연습문제 3
+  final list = <Y>[];
+  list.add(y1);
+  list.add(y2);
+
+  for (var element in list) {
+    element.b();
+  }
 }
