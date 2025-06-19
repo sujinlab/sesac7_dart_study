@@ -13,8 +13,8 @@ class Book2 implements Comparable<Book2> {
   bool operator ==(Object other) {
     if (other is Book2) {
       return title == other.title &&
-          publishDate.toString().substring(0, 9) ==
-              other.publishDate.toString().substring(0, 9);
+          publishDate.toString().substring(0, 10) ==
+              other.publishDate.toString().substring(0, 10);
     } else {
       return false;
     }
@@ -31,10 +31,21 @@ class Book2 implements Comparable<Book2> {
 
   //다른 Book2의 내용과 같은 book을 만듬.
   Book2 copyWith({String? title, DateTime? publishDate, String? comment}) {
+    publishDate = publishDate ?? this.publishDate;
+
     return Book2(
       title: title ?? this.title,
       comment: comment ?? this.comment,
-      publishDate: publishDate ?? this.publishDate,
+      publishDate: DateTime(
+        publishDate.year,
+        publishDate.month,
+        publishDate.day,
+        publishDate.hour,
+        publishDate.minute,
+        publishDate.second,
+        publishDate.millisecond,
+        publishDate.microsecond,
+      ),
     );
   }
 }

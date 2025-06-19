@@ -26,6 +26,16 @@ void main() {
         title: generateRandomBookTitle(),
       );
 
+      print(
+        'book1: ${book1.title}, ${book1.publishDate.toString().substring(0, 10)}',
+      );
+      print(
+        'book2: ${book2.title}, ${book2.publishDate.toString().substring(0, 10)}',
+      );
+      print(
+        'book3: ${book3.title}, ${book3.publishDate.toString().substring(0, 10)}',
+      );
+
       expect(true, book1 == book2);
       expect(false, book1 == book3);
     });
@@ -77,6 +87,7 @@ void main() {
       expect(book.comment, copyBook.comment);
       expect(book.title, copyBook.title);
       expect(book.publishDate, copyBook.publishDate);
+      expect(false, identical(book.publishDate, copyBook.publishDate));
     });
   }
 }
