@@ -31,20 +31,20 @@ class Book2 implements Comparable<Book2> {
 
   //다른 Book2의 내용과 같은 book을 만듬.
   Book2 copyWith({String? title, DateTime? publishDate, String? comment}) {
-    publishDate = publishDate ?? this.publishDate;
+    final newPublishDate = publishDate ?? this.publishDate;
 
     return Book2(
       title: title ?? this.title,
       comment: comment ?? this.comment,
       publishDate: DateTime(
-        publishDate.year,
-        publishDate.month,
-        publishDate.day,
-        publishDate.hour,
-        publishDate.minute,
-        publishDate.second,
-        publishDate.millisecond,
-        publishDate.microsecond,
+        newPublishDate.year,
+        newPublishDate.month,
+        newPublishDate.day,
+        newPublishDate.hour,
+        newPublishDate.minute,
+        newPublishDate.second,
+        newPublishDate.millisecond,
+        newPublishDate.microsecond,
       ),
     );
   }
