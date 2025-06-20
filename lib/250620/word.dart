@@ -1,10 +1,15 @@
 class Word {
-  String word = '';
+  String word;
+
+  Word({this.word = ''});
 
   static const vowels = ['a', 'e', 'i', 'o', 'u'];
 
   bool isVowel(int i) {
-    String alphabet = word.substring(i, i + 1);
+    if (i < 0 || i >= word.length) {
+      throw Exception('i가 잘못됐다');
+    }
+    String alphabet = word.substring(i, i + 1).toLowerCase();
 
     return vowels.contains(alphabet);
   }
