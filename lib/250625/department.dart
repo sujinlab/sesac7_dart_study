@@ -12,7 +12,7 @@ class Department {
     return {'name': name, 'leader': leader.toJson()};
   }
 
-  String toJsonString() {
-    return '''{"name": "$name", "leader": {${leader.toJsonString()}}}''';
-  }
+  // String toJsonString() {
+  //   return '''{"name": "$name", "leader": {${leader.toJsonString()}}}''';
+  // }
 }

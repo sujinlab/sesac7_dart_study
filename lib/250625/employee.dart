@@ -8,7 +8,7 @@ class Employee {
     return {'name': name, 'age': age};
   }
 
-  String toJsonString() {
-    return '''"name": "$name", "age": $age''';
-  }
+  // String toJsonString() {
+  //   return '''"name": "$name", "age": $age''';
+  // }
 }

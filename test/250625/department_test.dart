@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
@@ -16,14 +17,14 @@ void main() {
 
     //파일에 json쓰기
     final department = Department(
-      'dev${Random().nextInt(100)}',
-      Employee('sujin', Random().nextInt(100)),
+      'dev2',
+      Employee('sujin', 45),
     );
-    file.writeAsStringSync(department.toJsonString());
+    file.writeAsStringSync(jsonEncode(department.toJson()));
 
     //txt 파일읽어서, 인스탄스의 Json과 비교
     expect(
-      department.toJsonString(),
+      jsonEncode(department.toJson()),
       equals(File('asset/company.txt').readAsStringSync()),
     );
   });
