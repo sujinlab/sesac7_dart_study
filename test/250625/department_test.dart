@@ -8,11 +8,17 @@ import 'package:test/test.dart';
 
 void main() {
   test('Department 직렬화 테스트', () {
+    //테스트 디렉토리 확인 및 생성
+    final assetDir = Directory('asset');
+    if (!assetDir.existsSync()) {
+      assetDir.createSync(recursive: true);
+    }
+
     //파일이 있으면 삭제
     final file = File('asset/company.txt');
     if (file.existsSync()) {
       print('deleted company.txt');
-      file.delete();
+      file.deleteSync();
     }
 
     //파일에 json쓰기
