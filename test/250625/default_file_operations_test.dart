@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('copy테스트', () {
-    //source.txt가 있으면 삭제
+    //target.txt가 있으면 삭제
     final file = File('asset/target.txt');
     if (file.existsSync()) {
       file.delete();

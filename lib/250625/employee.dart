@@ -11,4 +11,22 @@ class Employee {
   // String toJsonString() {
   //   return '''"name": "$name", "age": $age''';
   // }
+
+  Employee.fromJson(Map<String, dynamic> json)
+    : name = json['name'],
+      age = json['age'];
+
+  @override
+  bool operator ==(Object other) {
+    // TODO: implement ==
+    if (other is Employee) {
+      return name == other.name && age == other.age;
+    } else {
+      return false;
+    }
+  }
+
+  @override
+  // TODO: implement hashCode
+  int get hashCode => name.hashCode ^ age.hashCode;
 }
