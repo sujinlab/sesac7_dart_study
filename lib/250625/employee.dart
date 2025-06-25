@@ -18,7 +18,6 @@ class Employee {
 
   @override
   bool operator ==(Object other) {
-    // TODO: implement ==
     if (other is Employee) {
       return name == other.name && age == other.age;
     } else {
@@ -27,6 +26,5 @@ class Employee {
   }
 
   @override
-  // TODO: implement hashCode
   int get hashCode => name.hashCode ^ age.hashCode;
 }

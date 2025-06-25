@@ -20,7 +20,6 @@ class Department {
 
   @override
   bool operator ==(Object other) {
-    // TODO: implement ==
     if (other is Department) {
       return name == other.name && leader == other.leader;
     } else {
@@ -29,6 +28,5 @@ class Department {
   }
 
   @override
-  // TODO: implement hashCode
   int get hashCode => name.hashCode ^ leader.hashCode;
 }
