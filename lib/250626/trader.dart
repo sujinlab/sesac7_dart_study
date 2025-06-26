@@ -44,7 +44,6 @@ void main() {
           .toSet()
           .toList()
         ..sort((a, b) => a.compareTo(b)))
-      .toList()
       .forEach(print);
   print('3-------\n');
 

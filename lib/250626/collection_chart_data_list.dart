@@ -41,6 +41,7 @@ void main() {
   Map<String, dynamic> json = jsonDecode(jsonString);
   final collectionChart = CollectionChart.fromJson(json);
 
+  //출력
   collectionChart.collectionChartDataList.forEach(
     (e) => print('${e.collectionName} : ${e.collectionSalePriceList.length}'),
   );
