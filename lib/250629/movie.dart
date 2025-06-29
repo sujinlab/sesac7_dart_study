@@ -6,9 +6,24 @@ class Movie {
   final int year;
 
   Movie.fromJson(Map<String, dynamic> map)
-    : title = map['title'],
-      director = map['director'],
-      year = map['year'];
+    : title = map['title'] ?? '',
+      director = map['director'] ?? '',
+      year = _checkYear(map['year']);
+
+  static int _checkYear(dynamic value) {
+    if (value is int) {
+      return value;
+    } else if (value is double) {
+      return value.toInt();
+    } else if (value is String) {
+      final parsed = num.tryParse(value);
+      if (parsed != null) {
+        return parsed.toInt();
+      }
+    }
+
+    return 0;
+  }
 
   Map<String, dynamic> toJson() {
     return {'title': title, 'director': director, 'year': year};
