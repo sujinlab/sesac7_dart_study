@@ -26,7 +26,7 @@ import 'package:modu_3_dart_study/model/address.dart';
 import 'package:modu_3_dart_study/model/company.dart';
 
 class User {
-  int id;
+  final int id;
   String name;
   String username;
   String email;

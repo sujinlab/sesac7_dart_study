@@ -14,7 +14,7 @@ enum FieldName {
 }
 
 class StockDataSourceImpl implements StockDataSource {
-  final columnCount = 7;
+  static const columnCount = 7;
   final String _filePath = 'asset/listing_status.csv';
   final List<StockListing> _stockListingList = [];
 
@@ -27,7 +27,7 @@ class StockDataSourceImpl implements StockDataSource {
   //csv파일의 패스를 받고, StockListing의 List를 반환
   Future<void> decodeCsv(String filePath) async {
     final file = File(filePath);
-    final csv = await file.readAsString();
+    final csv = file.readAsStringSync();
 
     List<String> csvRows = csv.split('\n');
     print('csvRows.length: ${csvRows.length}');
@@ -38,7 +38,8 @@ class StockDataSourceImpl implements StockDataSource {
       final csvColumns = csvRows[i].split(',');
 
       if (csvColumns.length == columnCount &&
-          csvColumns[FieldName.name.index].isNotEmpty) {
+          csvColumns[FieldName.name.index].isNotEmpty &&
+          csvColumns[FieldName.ipoDate.index] != 'null') {
         _stockListingList.add(StockListing.fromCsv(csvRows[i]));
       } else {
         print(csvColumns);

@@ -7,7 +7,7 @@ class StockListing {
   String _exchange;
   String _assetType;
   DateTime _ipoDate;
-  DateTime _delistingDate;
+  DateTime? _delistingDate;
   String _status;
 
   StockListing._internal(
@@ -28,8 +28,14 @@ class StockListing {
     String name = columns[1];
     String exchange = columns[2];
     String assetType = columns[3];
-    DateTime ipoDate = DateTime.now(); //4
-    DateTime delistingDate = DateTime.now(); //5
+    DateTime ipoDate = DateTime.parse(columns[4]);
+
+    DateTime? delistingDate;
+    if (columns[5] == 'null') {
+      delistingDate = null;
+    } else {
+      delistingDate = DateTime.parse(columns[5]);
+    }
     String status = columns[6];
 
     //객체만들기
