@@ -147,11 +147,15 @@ class UserDataSourceImpl implements UserDataSource {
 
     try {
       if (mapLat is String) {
-        lat = num.parse(mapLat) as double;
+        lat = double.parse(mapLat);
+      } else if (mapLat is num) {
+        lat = mapLat.toDouble();
+      }
 
-        if (mapLng is String) {
-          lng = num.parse(mapLng) as double;
-        }
+      if (mapLng is String) {
+        lng = double.parse(mapLng);
+      } else if (mapLng is num) {
+        lng = mapLng.toDouble();
       }
     } catch (e) {
       throw Exception('lat,lng 파싱에러');
