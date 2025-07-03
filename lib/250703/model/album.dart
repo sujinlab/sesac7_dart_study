@@ -14,7 +14,7 @@ class Album {
   final int? id;
   final String? title;
 
-  Album({required this.userId, required this.id, required this.title});
+  Album({this.userId, this.id, this.title});
 
   // JSON → 객체 생성
   factory Album.fromJson(Map<String, dynamic> json) => _$AlbumFromJson(json);

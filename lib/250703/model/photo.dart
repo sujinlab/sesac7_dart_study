@@ -19,11 +19,11 @@ class Photo {
   final String? thumbnailUrl;
 
   Photo({
-    required this.albumId,
-    required this.id,
-    required this.title,
-    required this.url,
-    required this.thumbnailUrl,
+    this.albumId,
+    this.id,
+    this.title,
+    this.url,
+    this.thumbnailUrl,
   });
 
   // JSON → Photo 객체 생성

@@ -19,11 +19,11 @@ class Comment {
   final String? body;
 
   Comment({
-    required this.postId,
-    required this.id,
-    required this.name,
-    required this.email,
-    required this.body,
+    this.postId,
+    this.id,
+    this.name,
+    this.email,
+    this.body,
   });
 
   factory Comment.fromJson(Map<String, dynamic> json) =>
