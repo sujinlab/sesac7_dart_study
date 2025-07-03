@@ -206,7 +206,7 @@ class UserDataSourceImpl implements UserDataSource {
   ];
 
   @override
-  Future<List<User>> getUsers() async {
-    return json.map((e) => User.fromJson(e)).toList();
+  Future<List<Map<String, dynamic>>> getUsers() async {
+    return json;
   }
 }

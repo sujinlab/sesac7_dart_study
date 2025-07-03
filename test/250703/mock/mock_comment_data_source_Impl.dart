@@ -2,7 +2,7 @@ import 'package:modu_3_dart_study/250703/data_source/comment_data_source.dart';
 import 'package:modu_3_dart_study/250703/model/comment.dart';
 
 class MockCommentDataSourceImpl implements CommentDataSource {
-  List<Map<String, dynamic>> list = [
+  final json = [
     {
       "postId": 1,
       "id": 1,
@@ -30,7 +30,7 @@ class MockCommentDataSourceImpl implements CommentDataSource {
   ];
 
   @override
-  Future<List<Comment>> getComments() async {
-    return list.map((e) => Comment.fromJson(e)).toList();
+  Future<List<Map<String, dynamic>>> getComments() async {
+    return json;
   }
 }

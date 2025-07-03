@@ -6,10 +6,14 @@ class CommentRepositoryImpl implements CommentRepository {
   final CommentDataSource _dataSource;
 
   CommentRepositoryImpl(this._dataSource);
-  
+
   @override
   Future<List<Comment>> getComments(int postId) async {
     final list = await _dataSource.getComments();
-    return list.where((e) => e.postId == postId).toList();
+    return list
+        .map((e) => Comment.fromJson(e))
+        .toList()
+        .where((e) => e.postId == postId)
+        .toList();
   }
 }

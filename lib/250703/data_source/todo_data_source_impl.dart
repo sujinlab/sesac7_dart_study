@@ -1121,13 +1121,15 @@ class TodoDataSourceImpl implements TodoDataSource {
   ];
 
   @override
-  Future<List<Todo>> getTodos() async {
-    return json.map((e) => Todo.fromJson(e)).toList();
+  Future<List<Map<String, dynamic>>> getTodos() async {
+    return json;
   }
 }
 
 void main() async {
   final TodoDataSource todoDataSource = TodoDataSourceImpl();
-  final List<Todo> list = await todoDataSource.getTodos();
+  final List<Todo> list = (await todoDataSource.getTodos())
+      .map((e) => Todo.fromJson((e)))
+      .toList();
   list.forEach(print);
 }

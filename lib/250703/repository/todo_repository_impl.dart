@@ -8,13 +8,14 @@ class TodoRepositoryImpl implements TodoRepository {
   TodoRepositoryImpl(this._todoDataSource);
 
   @override
-  Future<List<Todo>> getTodos() {
-    return _todoDataSource.getTodos();
+  Future<List<Todo>> getTodos() async {
+    final list = await _todoDataSource.getTodos();
+    return list.map((e) => Todo.fromJson(e)).toList();
   }
 
   @override
   Future<List<Todo>> getCompletedTodos() async {
     final list = await _todoDataSource.getTodos();
-    return list.where((e) => e.completed).toList();
+    return list.map((e) => Todo.fromJson(e)).where((e) => e.completed).toList();
   }
 }

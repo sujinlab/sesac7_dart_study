@@ -9,13 +9,17 @@ class UserRepositoryImpl implements UserRepositry {
   UserRepositoryImpl(this._userDataSource);
 
   @override
-  Future<List<User>> getUsers() {
-    return _userDataSource.getUsers();
+  Future<List<User>> getUsers() async {
+    final list = await _userDataSource.getUsers();
+    return list.map((e) => User.fromJson(e)).toList();
   }
 
   @override
   Future<List<User>> getUsersTop10ByUserName() async {
-    return (await _userDataSource.getUsers())
+    final list = await _userDataSource.getUsers();
+    return list
+        .map((e) => User.fromJson(e))
+        .toList()
         .sortedBy(
           (e) => (e.name == null || e.name!.isEmpty) ? 'zzzzz' : e.name!,
         )

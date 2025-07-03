@@ -27,7 +27,7 @@ class MockPhotoDataSourceImpl implements PhotoDataSource {
   ];
 
   @override
-  Future<List<Photo>> getPhotos() async {
-    return json.map((e) => Photo.fromJson(e)).toList();
+  Future<List<Map<String, dynamic>>> getPhotos() async {
+    return json;
   }
 }

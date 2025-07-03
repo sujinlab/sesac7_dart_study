@@ -37,7 +37,7 @@ class MockTodoDataSourceImpl implements TodoDataSource {
   ];
 
   @override
-  Future<List<Todo>> getTodos() async {
-    return json.map((e) => Todo.fromJson(e)).toList();
+  Future<List<Map<String, dynamic>>> getTodos() async {
+    return json;
   }
 }

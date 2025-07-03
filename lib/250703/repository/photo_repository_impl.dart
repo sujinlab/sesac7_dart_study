@@ -10,6 +10,7 @@ class PhotoRepositoryImpl implements PhotoRepository {
   @override
   Future<List<Photo>> getPhotos(int photoId) async {
     return (await _photoDataSource.getPhotos())
+        .map((e) => Photo.fromJson(e))
         .where((e) => e.albumId == photoId)
         .toList();
   }
