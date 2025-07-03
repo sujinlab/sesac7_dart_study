@@ -3,7 +3,7 @@ import 'package:modu_3_dart_study/250703/data_source/user_data_source.dart';
 import 'package:modu_3_dart_study/250703/model/user.dart';
 import 'package:modu_3_dart_study/250703/repository/user_repository.dart';
 
-class UserRepositoryImpl implements UserRepositry {
+class UserRepositoryImpl implements UserRepository {
   final UserDataSource _userDataSource;
 
   UserRepositoryImpl(this._userDataSource);
