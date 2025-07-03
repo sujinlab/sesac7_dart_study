@@ -19,10 +19,8 @@ class Address {
     this.geo,
   });
 
-  // JSON → 객체 생성
   factory Address.fromJson(Map<String, dynamic> json) =>
       _$AddressFromJson(json);
 
-  // 객체 → JSON 변환
   Map<String, dynamic> toJson() => _$AddressToJson(this);
 }

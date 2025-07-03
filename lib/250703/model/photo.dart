@@ -18,10 +18,8 @@ class Photo {
     this.thumbnailUrl,
   });
 
-  // JSON → Photo 객체 생성
   factory Photo.fromJson(Map<String, dynamic> json) => _$PhotoFromJson(json);
 
-  // Photo 객체 → JSON 변환
   Map<String, dynamic> toJson() => _$PhotoToJson(this);
 
   @override

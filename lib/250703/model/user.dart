@@ -26,10 +26,8 @@ class User {
     this.company,
   });
 
-  // JSON → 객체 생성
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-  // 객체 → JSON 변환
   Map<String, dynamic> toJson() => _$UserToJson(this);
 
   @override

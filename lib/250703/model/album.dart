@@ -10,9 +10,7 @@ class Album {
 
   Album({this.userId, this.id, this.title});
 
-  // JSON → 객체 생성
   factory Album.fromJson(Map<String, dynamic> json) => _$AlbumFromJson(json);
 
-  // 객체 → JSON 변환
   Map<String, dynamic> toJson() => _$AlbumToJson(this);
 }
