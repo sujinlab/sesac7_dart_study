@@ -1,0 +1,20 @@
+import 'package:modu_3_dart_study/250703/data_source/todo_data_source.dart';
+import 'package:modu_3_dart_study/250703/model/todo.dart';
+import 'package:modu_3_dart_study/250703/repository/todo_repository.dart';
+
+class TodoRepositoryImpl implements TodoRepository {
+  TodoDataSource _todoDataSource;
+
+  TodoRepositoryImpl(this._todoDataSource);
+
+  @override
+  Future<List<Todo>> getTodos() {
+    return _todoDataSource.getTodos();
+  }
+
+  @override
+  Future<List<Todo>> getCompletedTodos() async {
+    final list = await _todoDataSource.getTodos();
+    return list.where((e) => e.completed).toList();
+  }
+}
