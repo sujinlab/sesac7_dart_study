@@ -4,14 +4,6 @@ part 'photo.g.dart';
 
 @JsonSerializable()
 class Photo {
-  // {
-  // "albumId": 1,
-  // "id": 1,
-  // "title": "accusamus beatae ad facilis cum similique qui sunt",
-  // "url": "https://via.placeholder.com/600/92c952",
-  // "thumbnailUrl": "https://via.placeholder.com/150/92c952"
-  // },
-
   final int? albumId;
   final int? id;
   final String? title;

@@ -1,9 +1,3 @@
-// {
-// "userId": 1,
-// "id": 1,
-// "title": "quidem molestiae enim"
-// },
-
 import 'package:json_annotation/json_annotation.dart';
 
 part 'album.g.dart';
