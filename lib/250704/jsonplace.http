@@ -21,8 +21,8 @@ Content-Type: application/json
 
 {
   "id": 1,
-  "title": "test100",
-  "body": "test body100"
+  "title": "test 100",
+  "body": "test body 100"
 }
 
 
@@ -33,6 +33,6 @@ Content-Type: application/json
 {
   "userId": 100,
   "id": 1,
-  "title": "test100",
-  "body": "test body100"
+  "title": "test 10000",
+  "body": "test body 10000"
 }
