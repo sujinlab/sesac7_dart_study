@@ -35,8 +35,6 @@ class RemoteDataSourceImpl implements RemoteDataSource {
   Future<Response<List<dynamic>>> getPosts() async {
     final response = await _client.get(Uri.parse('$baseUrl/posts'));
 
-    //print(response.body);
-
     return Response(
       statusCode: response.statusCode,
       header: response.headers,
@@ -73,7 +71,11 @@ class RemoteDataSourceImpl implements RemoteDataSource {
     required int id,
     required Map<String, dynamic> post,
   }) async {
-    final response = await _client.patch(Uri.parse('$baseUrl/posts/$id'));
+    final response = await _client.patch(
+      Uri.parse('$baseUrl/posts/$id'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode(post),
+    );
 
     return Response(
       statusCode: response.statusCode,

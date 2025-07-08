@@ -88,6 +88,7 @@ void main() {
     );
 
     final response = await dataSource.getPosts();
+
     expect(response.statusCode, 200);
   });
 

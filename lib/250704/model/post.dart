@@ -53,7 +53,7 @@ class Post {
 
   @override
   String toString() {
-    return 'userId: $userId, id:$id, title: $title, completed: $body';
+    return 'userId: $userId, id:$id, title: $title, body: $body';
   }
 }
 

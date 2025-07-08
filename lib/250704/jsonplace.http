@@ -3,7 +3,7 @@ GET https://jsonplaceholder.typicode.com/posts/1
 
 ### 글쓰기
 POST https://jsonplaceholder.typicode.com/posts
-Content-Type: : application/json
+Content-Type: application/json
 
 {
   "userId": 1,
