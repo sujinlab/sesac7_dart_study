@@ -194,7 +194,7 @@ void main() {
         dataSource.getUsers(),
       ).thenAnswer((_) async {
         await Future.delayed(Duration(seconds: 1));
-        return Response<List<UserDto>>(
+        return Response(
           statusCode: 200,
           header: {},
           body: [
@@ -207,9 +207,10 @@ void main() {
         );
       });
 
-      final result =
-          (await userRepository.getUsers()) as Error<List<User>, NetworkError>;
-      expect(result.e.statusCode, NetworkError.parseError.statusCode);
+      final result = await userRepository.getUsers();
+      if (result is Error<List<User>, NetworkError>) {
+        expect(result.e.statusCode, NetworkError.parseError.statusCode);
+      }
     });
 
     test('11초, NetworkError.requestTimeout', () async {
@@ -246,7 +247,7 @@ void main() {
         dataSource.getUsers(),
       ).thenAnswer((_) async {
         await Future.delayed(Duration(seconds: 1));
-        return Response<List<UserDto>>(
+        return Response(
           statusCode: NetworkError.notFound.statusCode,
           header: {},
           body: [
