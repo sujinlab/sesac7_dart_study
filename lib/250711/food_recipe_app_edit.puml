@@ -1,0 +1,253 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+scale 0.5
+
+enum FilterOptions {
+    All,
+    Newest,
+    Oldest,
+    Popularity,
+}
+
+interface RecipeRepository {
+    {abstract} List<Recipe> getRecommendedRecipesByCategory(int categoryId)
+    {abstract} List<Recipe> getRecentRecipes() /': 최근 생성된 레시피 중 일부를 가져오기 *'/
+    {abstract} List<Recipe> getRecipesByKeyword(String keyword, FilterOptions option, int? rate, List<int> category) /': 특정 검색어를 포함하는 레시피 가져오기(필터) *'/
+    {abstract} List<Map<String, dynamic>> getCategory() /': 카테고리 목록 가져오기 *'/
+    {abstract} Recipe getRecipe(int recipeId) /': 현재 레시피 정보 가져오기 *'/
+    {abstract} void rateRecipe(int recipeId, double rating, String userId) /': 현재 레시피 별점 매기기 *'/
+    {abstract} void saveRecipe(int recipeId, String userId) /': 현재 레시피 저장하기 *'/
+    {abstract} void unsaveRecipe(int recipeId, String userId) /': 현재 레시피 저장 취소하기 *'/
+    {abstract} void createRecipe(Recipe recipe, String userId) /': 레시피 작성하기 *'/
+}
+
+note top of RecipeRepository
+    List<Recipe> getRecommendedRecipesByCategory(int categoryId) : 특정 카테고리의 추천 레시피 가져오기 *
+    List<Recipe> getRecentRecipes() : 최근 생성된 레시피 중 일부를 가져오기 *
+    List<Recipe> getRecipesByKeyword(String keyword, FilterOptions option, int? rate, List<int> category) : 특정 검색어를 포함하는 레시피 가져오기(필터) *
+    List<Map<String, dynamic>> getCategory() : 카테고리 목록 가져오기 *
+    Recipe getRecipe(int recipeId) : 현재 레시피 정보 가져오기 *
+    void rateRecipe(int recipeId, double rating, String userId) : 현재 레시피 별점 매기기 *
+    void saveRecipe(int recipeId, String userId) : 현재 레시피 저장하기 *
+    void unsaveRecipe(int recipeId, String userId) : 현재 레시피 저장 취소하기 *
+    void createRecipe(Recipe recipe, String userId) : 레시피 작성하기 *
+end note
+
+class RecipeRepositoryImpl implements RecipeRepository {
+    List<Recipe> getRecommendedRecipesByCategory(int categoryId)
+    List<Recipe> getRecentRecipes() /': 최근 생성된 레시피 중 일부를 가져오기 *'/
+    List<Recipe> getRecipesByKeyword(String keyword, FilterOptions option, int? rate, List<int> category) /': 특정 검색어를 포함하는 레시피 가져오기(필터) *'/
+    List<Map<String, dynamic>> getCategory() /': 카테고리 목록 가져오기 *'/
+    Recipe getRecipe(int recipeId) /': 현재 레시피 정보 가져오기 *'/
+    void rateRecipe(int recipeId, double rating, String userId) /': 현재 레시피 별점 매기기 *'/
+    void saveRecipe(int recipeId, String userId) /': 현재 레시피 저장하기 *'/
+    void unsaveRecipe(int recipeId, String userId) /': 현재 레시피 저장 취소하기 *'/
+    void createRecipe(Recipe recipe, String userId) /': 레시피 작성하기 *'/
+}
+
+interface UserRepository {
+    {abstract} User getMyProfile(String userId) /': 로그인한 유저 정보 가져오기 *'/
+    {abstract} void followUser(int userName, String userId) /': 유저 팔로우 *'/
+    {abstract} void unfollowUser(int userName, String userId) /': 유저 언팔로우 *'/
+    {abstract} List<Recipe> getMyRecipes(String userId) /': 로그인한 유저가 작성한 레시피 가져오기 *'/
+    {abstract} List<Video> getMyVideos(String userId) /': 로그인한 유저가 업로드한 비디오 가져오기 *'/
+    {abstract} List<Recipe> getSavedRecipes(String userId) /': 저장한 레시피를 가져오는 기능 *'/
+    {abstract} List<Recipe> getRecentSearchedRecipes(String userId) /': 최근 본 레시피를 가져오기 *'/
+    {abstract} void editMyProfile(User user) /': 유저 정보 변경하기 *'/
+}
+
+note top of UserRepository
+    User getMyProfile(String userId) : 로그인한 유저 정보 가져오기 *
+    void followUser(int userName) : 유저 팔로우 *
+    void unfollowUser(int userName) : 유저 언팔로우 *
+    List<Recipe> getMyRecipes(String userId) : 로그인한 유저가 작성한 레시피 가져오기 *
+    List<Video> getMyVideos(String userId) : 로그인한 유저가 업로드한 비디오 가져오기 *
+    List<Recipe> getSavedRecipes(String userId) : 저장한 레시피를 가져오는 기능 *
+    List<Recipe> getRecentSearchedRecipes(String userId) : 최근 검색한 레시피를 가져오기 *
+    void editMyProfile(User user) : 유저 정보 변경하기 *
+end note
+
+class UserRepositoryImpl implements UserRepository {
+    User getMyProfile(String userId) /': 로그인한 유저 정보 가져오기 *'/
+    void followUser(int userName, String userId) /': 유저 팔로우 *'/
+    void unfollowUser(int userName, String userId) /': 유저 언팔로우 *'/
+    List<Recipe> getMyRecipes(String userId) /': 로그인한 유저가 작성한 레시피 가져오기 *'/
+    List<Video> getMyVideos(String userId) /': 로그인한 유저가 업로드한 비디오 가져오기 *'/
+    List<Recipe> getSavedRecipes(String userId) /': 저장한 레시피를 가져오는 기능 *'/
+    List<Recipe> getRecentSearchedRecipes(String userId) /': 최근 본 레시피를 가져오기 *'/
+    void editMyProfile(User user) /': 유저 정보 변경하기 *'/
+
+}
+
+interface ReviewRepository {
+    {abstract} List<Review> getReviews(int recipeId, String? userId) /': 현재 레시피의 리뷰 가져오기 (유저 데이터를 넘기면 리뷰에 대한 기존 추천여부))) *'/
+    {abstract} void createReview(int reviewId, String userId, String comment) /': 리뷰 작성하기 *'/
+    {abstract} void createUpVote(String userId) /': 리뷰 추천하기 *'/
+    {abstract} void createDownVote(String userId) /': 리뷰 비추천하기 *'/
+}
+
+note top of ReviewRepository
+    List<Review> getReviews(int recipeId, String? userId) : 현재 레시피의 리뷰 가져오기 *
+    void createReview(int reviewId, String userId, String comment) : 리뷰 작성하기 *
+    void createUpVote(String userId) : 리뷰 추천하기 *
+    void createDownVote(String userId) : 리뷰 비추천하기 *
+end note
+
+class ReviewRepositoryImpl implements ReviewRepository {
+    List<Review> getReviews(int recipeId, String? userId) /': 현재 레시피의 리뷰 가져오기 (유저 데이터를 넘기면 리뷰에 대한 기존 추천여부))) *'/
+    void createReview(int reviewId, String userId, String comment) /': 리뷰 작성하기 *'/
+    void createUpVote(String userId) /': 리뷰 추천하기 *'/
+    void createDownVote(String userId) /': 리뷰 비추천하기 *'/
+}
+
+
+interface NotificationRepository {
+    {abstract} List<Notification> getNotifications(String userId) /': 알림 목록 가져오기 *'/
+    {abstract} List<Notification> getReadNotifications(String userId) /': 읽은 알림 목록 가져오기 *'/
+    {abstract} List<Notification> getUnreadNotifications(String userId) /': 안읽은 알림 목록 가져오기 *'/
+}
+
+note top of NotificationRepository
+    List<Notification> getNotifications(String userId) : 알림 목록 가져오기 *
+    List<Notification> getReadNotifications(String userId) : 읽은 알림 목록 가져오기 *
+    List<Notification> getUnreadNotifications(String userId) : 안읽은 알림 목록 가져오기 *
+end note
+
+class NotificationRepositoryImpl implements NotificationRepository {
+    List<Notification> getNotifications(String userId) /': 알림 목록 가져오기 *'/
+    List<Notification> getReadNotifications(String userId) /': 읽은 알림 목록 가져오기 *'/
+    List<Notification> getUnreadNotifications(String userId) /': 안읽은 알림 목록 가져오기 *'/
+}
+
+
+
+
+interface Sharable {
+    void createShareLink(String link) /': 고유 공유 링크 생성(서버에게: 고유 링크를 link 값과 동일한 값으로 설정해주세요~)'/
+}
+interface AuthRepository {
+    {abstract} Auth signUp()
+    {abstract} Auth signIn()
+    {abstract} Auth socialSignIn()
+    {abstract} Auth socialSignUp()
+}
+
+class AuthRepositoryImpl implements AuthRepository {
+    Auth signUp()
+    Auth signIn()
+    Auth socialSignIn()
+    Auth socialSignUp()
+}
+
+note right of AuthRepositoryImpl
+로그인/회원가입에 성공할 경우 인증 객체(Auth)를 반환
+사용자(User)는 고유한 Auth 값을 가지게 됨
+end note
+
+UserRepositoryImpl ..> User
+User ..> Auth
+ReviewRepositoryImpl ..> Review
+
+class Recipe implements Sharable {
+    int id
+    String recipeName
+    Video recipeVideo
+    List<Map<String, dynamic>> recipeMethod
+    List<Ingredient> ingredient
+}
+
+Recipe ..> Video
+
+interface Ingredient {}
+
+note left of Ingredient
+재료임을 나타내는 마커 인터페이스
+end note
+
+class Tomato implements Ingredient {
+    String name
+    String imageUrl
+    int amount
+}
+
+class Cabbage implements Ingredient {
+    String name
+    String imageUrl
+    int amount
+}
+
+class SliceBread implements Ingredient {
+    String name
+    String imageUrl
+    int amount
+}
+
+
+
+
+
+class User implements Sharable {
+    Auth authUser
+    String userRole
+    String profileImageUrl
+    String userDescription
+    int followers
+    int following
+}
+
+class Auth {
+    String id
+    String name
+    String userId
+}
+
+class Review {
+    String userName
+    String profileImageUrl
+    int likeCount
+    int unlikeCount
+    bool myVote
+}
+class Notification {
+    String notificationTitle
+    String notificationComment
+    String notificationType
+    bool isRead
+    Date createTime
+}
+NotificationRepositoryImpl ..> Notification
+
+interface Video{}
+
+note left of Video
+비디오임을 나타내는 마커 인터페이스
+end note
+
+class PreparingVideo implements Video {
+    String videoUrl
+    String thumbnailUrl
+}
+
+class CookingVideo implements Video {
+    String videoUrl
+    String thumbnailUrl
+}
+
+class ReviewingVideo implements Video {
+    String videoUrl
+    String thumbnailUrl
+}
+
+UserRepositoryImpl ..> Video
+UserRepositoryImpl ..> Recipe
+
+Recipe ..> Ingredient
+RecipeRepositoryImpl ..> Recipe
+AuthRepositoryImpl ..> Auth
+NotificationRepository ..> AuthRepository : 알림은 로그인 사람만 가능
+ReviewRepository ..> AuthRepository : 리뷰 작성 및 평가 로그인한 사람만 가능
+RecipeRepository ..> AuthRepository : 레시피 작성은 로그인 한 사람만 가능
+
+
+@enduml
